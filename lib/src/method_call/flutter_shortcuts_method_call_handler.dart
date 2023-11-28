@@ -93,4 +93,10 @@ class FlutterShortcutsMethodCallHandler extends FlutterShortcutsPlatform {
   Future<void> changeShortcutItemIcon(String id, String icon) async {
     await channel.invokeMethod<void>('changeShortcutItemIcon', [id, icon]);
   }
+
+  @override
+  Future<void> pinShortcutItem(ShortcutItem shortcut) async {
+    final Map<String, dynamic> item = shortcut.serialize();
+    await channel.invokeMethod<void>('pinShortcutItem', [item]);
+  }
 }

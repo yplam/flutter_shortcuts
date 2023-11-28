@@ -72,4 +72,8 @@ abstract class FlutterShortcutsPlatform extends PlatformInterface {
     throw UnimplementedError(
         "changeShortcutItemIcon() has not been implemented.");
   }
+
+  Future<void> pinShortcutItem(ShortcutItem shortcut) async {
+    throw UnimplementedError("pinShortcutItem() has not been implemented.");
+  }
 }

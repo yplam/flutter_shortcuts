@@ -211,7 +211,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     ElevatedButton(
-                      child: Text("Change icon of 2nd Shortcut"),
+                      child: Text("Change icon of 2nd"),
                       onPressed: () {
                         flutterShortcuts.changeShortcutItemIcon(
                           id: "2",
@@ -254,6 +254,25 @@ class _MyAppState extends State<MyApp> {
                               isBot: true,
                             ),
                           ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                Text("Pin Shortcut"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      child: Text("Pin Shortcut"),
+                      onPressed: () async {
+                        await flutterShortcuts.pinShortcutItem(
+                          shortcut: ShortcutItem(
+                            id: "1",
+                            action: 'Go to url action',
+                            shortLabel: 'Visit Page',
+                            icon: 'assets/icons/url.png',
+                          ),
                         );
                       },
                     ),

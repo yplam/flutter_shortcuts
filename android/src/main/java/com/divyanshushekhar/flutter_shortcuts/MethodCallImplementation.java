@@ -99,6 +99,9 @@ public class MethodCallImplementation implements MethodChannel.MethodCallHandler
                 ShortcutManagerCompat.removeAllDynamicShortcuts(context);
                 debugPrint("Removed all shortcuts.");
                 break;
+            case "pinShortcutItem":
+                pinShortcutItem(call);
+                break;
             default:
                 result.notImplemented();
                 break;
@@ -299,6 +302,21 @@ public class MethodCallImplementation implements MethodChannel.MethodCallHandler
                 Log.e(TAG,e.toString());
             }
         } catch(Exception e) {
+            Log.e(TAG,e.toString());
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N_MR1)
+    private void pinShortcutItem(MethodCall call) {
+        final List<Map<String, Object>> args = call.arguments();
+        List<ShortcutInfoCompat> shortcuts;
+        ShortcutInfoCompat shortcut;
+        try {
+            shortcuts = shortcutInfoCompatList(args);
+            shortcut = shortcuts.get(0);
+            ShortcutManagerCompat.requestPinShortcut(context,shortcut,null);
+            debugPrint("Shortcut pinned");
+        } catch (Exception e) {
             Log.e(TAG,e.toString());
         }
     }

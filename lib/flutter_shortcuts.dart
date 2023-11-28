@@ -82,4 +82,11 @@ class FlutterShortcuts {
       {required String id, required String icon}) async {
     return FlutterShortcutsPlatform.instance.changeShortcutItemIcon(id, icon);
   }
+
+  /// [pinShortcutItem] request user permission to pin a single shortcut item
+  /// to desktop based on id.
+  /// If the ID of the shortcut is not same, no changes will be reflected.
+  Future<void> pinShortcutItem({required ShortcutItem shortcut}) async {
+    return FlutterShortcutsPlatform.instance.pinShortcutItem(shortcut);
+  }
 }
